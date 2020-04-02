@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -23,7 +25,8 @@ public class Categoria implements Serializable {
 	@Column(name = "nome")
 	private String nome;
 	
-	@ManyToMany(mappedBy = "categorias")  //vem lá da List de categorias (Categoria)
+	@JsonManagedReference  /*faz do lado que vc quer que venham os produtos */
+	@ManyToMany(mappedBy = "categorias")  /*vem lá da List de categorias (Categoria)*/
 	private List<Produto> produtos = new ArrayList<>();
 
 	public Categoria() {
