@@ -24,13 +24,10 @@ public class Produto implements Serializable {
 	private String nome;
 	private double preco;
 
-	@JsonBackReference   /*Omite a lista de categorias pra cada produto*/
+	@JsonBackReference 
 	@ManyToMany
-	@JoinTable(name = "Produto_Categoria"
-	, joinColumns = @JoinColumn(name = "produto_id")
-	, inverseJoinColumns = @JoinColumn(name = "categoria_id")
-	)
-	private List<Categoria> categorias = new ArrayList<>(); // nao entra no construtor, pq já foi inst.
+	@JoinTable(name = "Produto_Categoria", joinColumns = @JoinColumn(name = "produto_id"), inverseJoinColumns = @JoinColumn(name = "categoria_id"))
+	private List<Categoria> categorias = new ArrayList<>(); 
 
 	public Produto() {
 
